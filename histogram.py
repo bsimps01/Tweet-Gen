@@ -13,9 +13,20 @@ def histogram():
     return word_histogram
 
 def unique_words():
-    pass
+    word_count = 0
+    for word in word_histogram:
+        if word_histogram[word] == 1:
+            word_count += 1
+    return(word_count)
+
 def frequency():
-    pass
+    for word in word_histogram:
+        print(f'Word found: {word}, Word Count: {word_histogram[word]}')
+    else:
+        return (f'There are {unique_words()} unique words.')
 
 if __name__ == '__main__':
-    print(histogram())
+    this = histogram()
+    print(this)
+    print(unique_words())
+    print(frequency())
