@@ -7,9 +7,10 @@ lines = filename.readlines()
 word_histogram = {}
 
 def histogram():
-    for word in lines:
-        word = word.rstrip()
-        word_histogram[word] = word_histogram.get(word, 0) + 1
+    for line in lines:
+        for word in line.split():
+            word = word.rstrip()
+            word_histogram[word] = word_histogram.get(word, 0) + 1
     return word_histogram
 
 def unique_words():
@@ -26,7 +27,6 @@ def frequency():
         return (f'There are {unique_words()} unique words.')
 
 if __name__ == '__main__':
-    this = histogram()
-    print(this)
+    print(histogram())
     print(unique_words())
     print(frequency())
