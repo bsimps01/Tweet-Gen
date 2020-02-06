@@ -7,6 +7,11 @@ lines = filename.readlines()
 word_histogram = {}
 
 def histogram():
+    filename = open("/Users/benjamin5311/dev/MakeSchool/CS1-2/Tweet-Gen/EAP.text", "r")
+    lines = filename.readlines()
+
+    word_histogram = {}
+    
     for line in lines:
         for word in line.split():
             word = word.rstrip()
