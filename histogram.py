@@ -1,10 +1,10 @@
 import random
 import sys
 
-filename = open("/Users/benjamin5311/dev/MakeSchool/CS1-2/Tweet-Gen/EAP.text", "r")
-lines = filename.readlines()
+#filename = open("/Users/benjamin5311/dev/MakeSchool/CS1-2/Tweet-Gen/EAP.text", "r")
+#lines = filename.readlines()
 
-word_histogram = {}
+#word_histogram = {}
 
 def histogram():
     filename = open("/Users/benjamin5311/dev/MakeSchool/CS1-2/Tweet-Gen/EAP.text", "r")
