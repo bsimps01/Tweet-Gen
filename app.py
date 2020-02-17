@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/')
 def generate_words():
     lines = histogram("./EAP.text")
-    my_histogram = histogram(lines)
     sentence = ""
 
     num_word = 10

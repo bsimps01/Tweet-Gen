@@ -7,7 +7,7 @@ import sys
 #word_histogram = {}
 
 def histogram():
-    filename = open("/Users/benjamin5311/dev/MakeSchool/CS1-2/Tweet-Gen/EAP.text", "r")
+    filename = open("./EAP.text", "r")
     lines = filename.readlines()
 
     word_histogram = {}
@@ -22,7 +22,7 @@ def unique_words():
     word_count = 0
     for word in word_histogram:
         if word_histogram[word] == 1:
-            word_count += 1
+             word_count += 1
     return(word_count)
 
 def frequency():
