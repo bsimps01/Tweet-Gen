@@ -1,12 +1,12 @@
 from flask import Flask
-from histogram import histogram
-from sample import sample_by_frequency
+from dictogram import Dictogram
+from listogram import Listogram
 
 app = Flask(__name__)
 
 @app.route('/')
 def generate_words():
-    lines = histogram("./EAP.text")
+    lines = Dictogram("./EAP.text")
     sentence = ""
 
     num_word = 10
