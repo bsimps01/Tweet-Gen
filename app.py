@@ -6,15 +6,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def generate_words():
-    lines = Dictogram("./EAP.text")
+    with open('./EAP.text') as f:
+        words = f.readlines()
+        lines = Dictogram(words)
     sentence = ""
-
-    num_word = 10
-    for i in range(num_words):
-        word =  sample_by_frequency(my_histogram)
-        sentence += " " + word
-
-    return sentence
+    return lines.sample()
+    num_words = 10
 
 if __name__ == '__main__':
     app.run()
