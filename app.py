@@ -2,20 +2,27 @@ from flask import Flask
 from dictogram import Dictogram
 from listogram import Listogram
 from random import random
+from markov import MarkovChain
 
 app = Flask(__name__)
 
 @app.route('/')
 def generate_words():
-    #with open('./EAP.text') as f:
-        #words = f.readlines()
-    lines = Dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
-    sentence = ""
+    words_list = []
+    with open('./EAP.text') as f:
+        lines = f.readlines()
+        for line in lines:
+            for word in line.split():
+                words_list.append(word)
+    #lines = Dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+    markovchain = MarkovChain(words_list)
+    '''sentence = ""
     num_words = 20
     for i in range(num_words):
         word = lines.sample()
         sentence += " " + word
-    return sentence
+    return sentence'''
+    return markovchain.walk(10)
 
 if __name__ == '__main__':
     app.run()

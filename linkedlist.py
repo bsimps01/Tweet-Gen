@@ -84,7 +84,7 @@ class LinkedList(object):
         new_node = Node(item)
 
         if self.head is not None:
-            self.head.next = new_node
+            new_node.next = self.head
         else:
             self.tail = new_node
         self.head = new_node
