@@ -41,7 +41,7 @@ class HashTable(object):
 
         for bucket in self.buckets:
             for key, value in bucket.items():
-                all_values.append(key)
+                all_values.append(value)
         return all_values
 
     def items(self):
@@ -87,12 +87,24 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
         bucket = self.buckets[hash(key) % len(self.buckets)]
+        print("Entered get")
+        bucket.print_ll()
 
-        for key_value, value in bucket.items():
+        result = bucket.find(lambda key_value: key_value[0] == key)
+
+        '''for key_value, value in bucket.items():
             if key_value == key:
+                print("Found", value)
                 return value
             else:
-                raise KeyError('Key not found: {}'.format(key))
+                print("Not found")
+                raise KeyError('Key not found: {}'.format(key))'''
+        if result is not None:
+            print("Found", result[1])
+            return result[1]
+        else:
+            print("Not found")
+            raise KeyError('Key not found: {}'.format(key))
 
 
     def set(self, key, value):
@@ -105,11 +117,16 @@ class HashTable(object):
         bucket = self.buckets[hash(key) % len(self.buckets)]
 
         entry = bucket.find(lambda key_value: key_value[0] == key)
-
+        print("Before set")
+        bucket.print_ll()
         if entry is not None:
+            print("Update entry")
             bucket.delete(entry)
+            bucket.append((key, value))
         else:
             bucket.append((key, value))
+            print("Adding new entry")
+            bucket.print_ll()
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -161,4 +178,16 @@ def test_hash_table():
 
 
 if __name__ == '__main__':
-    test_hash_table()
+    #test_hash_table()
+    ht = HashTable()
+    ht.set('I', 1)
+    ht.set('V', 4)
+    ht.set('X', 9)
+    #ht.length() == 3
+    ht.set('V', 5)  # Update value
+    #ht.set('X', 10)  # Update value
+    #ht.get('I') == 1
+    ht.get('V')
+    #ht.get('X') == 10
+    #ht.length() == 3  # Check length is not overcounting
+    
