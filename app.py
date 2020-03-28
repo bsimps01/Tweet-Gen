@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request, url_for
 from dictogram import Dictogram
 from listogram import Listogram
 from random import random
@@ -22,7 +22,9 @@ def generate_words():
         word = lines.sample()
         sentence += " " + word
     return sentence'''
-    return markovchain.walk(10)
+    sentence = markovchain.walk(24)
+    
+    return render_template('index.html', sentence=sentence)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
