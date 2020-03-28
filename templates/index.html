@@ -14,8 +14,8 @@
     {% block body %}
         <h1>And then the raven said...</h1>
         <a href="{{ url_for('generate_words', sentence=sentence) }}"><type="button" class="btn btn-danger">NEVERMORE!</button></a><br><br>
-        <a href=""><img src="static/raven.jpg" class="w-100 h-100"></a>
-        <br><br>{{sentence}}<br>
+        <a href=""><img src="static/raven.jpg" class="w-50 h-50"></a>
+        <br><br><h6>{{sentence}}</h6><br>
     
     {% endblock %}
     </center>
